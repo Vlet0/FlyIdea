@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "malecns-nav-lite"
+version = "0.1.0"
+description = "Navigation-optimised lite database of the Drosophila male CNS connectome"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+data = [
+    "pyarrow>=14",
+    "pandas>=2.0",
+]
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+]
+
+[project.scripts]
+malecns-nav-lite = "malecns_nav_lite.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["malecns_nav_lite*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
